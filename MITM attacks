@@ -1,0 +1,14 @@
+On Receiving Server Certificate:
+    Validate digital signature against trusted CA
+    Check certificate revocation list (CRL)
+    Verify certificate hostname matches server address
+
+If certificate invalid or revoked:
+    Terminate connection
+    Alert user of potential MITM attack
+Else:
+    Continue TLS handshake
+
+During Communication:
+    Use forward secrecy keys (Ephemeral Diffie-Hellman)
+    Verify each message using HMAC and sequence numbers
