@@ -1,0 +1,13 @@
+Function SendSecureMessage(ClientMessage):
+    Encrypt ClientMessage using SessionKey
+    Generate HMAC for message integrity
+    Send EncryptedMessage + HMAC to Server
+
+Function ReceiveSecureMessage(EncryptedMessage, HMAC):
+    Decrypt EncryptedMessage using SessionKey
+    Verify HMAC matches
+    If HMAC invalid:
+        Log error
+        Discard message
+    Else:
+        Display message
