@@ -1,0 +1,29 @@
+Initialize Client
+Initialize Server
+
+// Step 1: Client requests a secure connection
+Client -> Server: "Hello, Server. Requesting TLS connection"
+
+// Step 2: Server sends its certificate
+Server -> Client: Send digital certificate (signed by CA)
+
+// Step 3: Client validates the server certificate
+If certificate is valid and signed by trusted CA:
+    Proceed to key exchange
+Else:
+    Terminate connection
+    Log security warning
+
+// Step 4: TLS Handshake (Key Exchange)
+Client generates Pre-Master Secret
+Client encrypts Pre-Master Secret with Server Public Key
+Client -> Server: Send encrypted Pre-Master Secret
+
+Server decrypts Pre-Master Secret using Private Key
+Both Client and Server generate Session Key from Pre-Master Secret
+
+// Step 5: Secure Communication
+Client <-> Server: Encrypt and decrypt messages using Session Key
+Ensure message integrity using HMAC
+
+End Secure Session
